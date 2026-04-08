@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Gorila | Профессиональный клининг и уборка</title>
+    <!-- Font Awesome 6 (бесплатные иконки) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: современный гротеск -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e2a3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Переменные */
+        :root {
+            --primary: #0f766e;
+            --primary-dark: #0d5c56;
+            --primary-light: #14b8a6;
+            --accent: #f59e0b;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-800: #1f2937;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        /* Общие стили */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            text-align: center;
+            margin-bottom: 48px;
+            color: #0f172a;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #4b5563;
+            max-width: 700px;
+            margin: -32px auto 48px auto;
+            font-size: 1.125rem;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid white;
+            color: white;
+        }
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-dark);
+            border-color: white;
+        }
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .btn-accent {
+            background-color: var(--accent);
+        }
+        .btn-accent:hover {
+            background-color: #d97706;
+        }
+
+        /* Header & навигация */
+        .header {
+            background-color: white;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(4px);
+            background: rgba(255,255,255,0.95);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .logo span {
+            color: var(--accent);
+        }
+        .nav-menu {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-link {
+            text-decoration: none;
+            font-weight: 500;
+            color: #1e293b;
+            transition: 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        .nav-cta {
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+        }
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            color: white;
+        }
+        .burger {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero секция */
+        .hero {
+            background: linear-gradient(105deg, #022c2a 0%, #0f766e 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            opacity: 0.9;
+            max-width: 550px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .hero-stats {
+            flex: 0.7;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 32px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+        .stat-text {
+            font-weight: 500;
+        }
+
+        /* Карточки услуг */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        .service-card {
+            background: white;
+            border-radius: 28px;
+            padding: 32px 24px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.25s;
+            text-align: center;
+            border: 1px solid var(--gray-100);
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin: 16px 0 8px;
+        }
+        .price small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #6c757d;
+        }
+        .service-desc {
+            color: #4b5563;
+            margin-bottom: 24px;
+        }
+
+        /* Преимущества / О нас */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+        .feature-item {
+            text-align: center;
+            padding: 16px;
+        }
+        .feature-icon {
+            background: #e0f2f1;
+            width: 72px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        .feature-item h3 {
+            margin-bottom: 12px;
+        }
+
+        /* Отзывы */
+        .testimonials {
+            background-color: var(--gray-50);
+        }
+        .testimonial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+        }
+        .testimonial-card {
+            background: white;
+            padding: 32px;
+            border-radius: 28px;
+            flex: 1;
+            min-width: 280px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+        }
+        .stars {
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #2d3e50;
+        }
+        .client-name {
+            font-weight: 700;
+        }
+
+        /* Контакты + форма */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        .contact-info {
+            background: var(--gray-50);
+            padding: 32px;
+            border-radius: 32px;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .info-item i {
+            width: 44px;
+            height: 44px;
+            background: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .contact-form input, .contact-form select, .contact-form textarea {
+            padding: 14px 18px;
+            border: 1px solid var(--gray-200);
+            border-radius: 28px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(15,118,110,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: #cbd5e1;
+            padding: 48px 0 24px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        .social-links a {
+            color: #cbd5e1;
+            margin-left: 24px;
+            font-size: 1.4rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: var(--primary-light);
+        }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #1e293b;
+            padding-top: 24px;
+            font-size: 0.875rem;
+        }
+
+        /* адаптив */
+        @media (max-width: 900px) {
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            h2 {
+                font-size: 1.9rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .burger {
+                display: block;
+            }
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 74px;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: var(--shadow-md);
+                padding: 32px 0;
+                gap: 28px;
+                background: white;
+                z-index: 99;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-menu li {
+                width: 100%;
+            }
+            .nav-link {
+                font-size: 1.1rem;
+            }
+            .container {
+                padding: 0 20px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+        }
+        button:active, .btn:active {
+            transform: scale(0.97);
+        }
+        .toast-message {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1f2937;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 40px;
+            z-index: 1000;
+            font-weight: 500;
+            opacity: 0;
+            transition: 0.2s;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="navbar">
+                <a href="#" class="logo">Gorila</a>
+                <div class="burger" id="burgerBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">Главная</a></li>
+                    <li><a href="#services" class="nav-link">Услуги</a></li>
+                    <li><a href="#about" class="nav-link">О нас</a></li>
+                    <li><a href="#contact" class="nav-link">Контакты</a></li>
+                    <li><a href="#contact" class="nav-link nav-cta">Заказать уборку</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero / Главный экран -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Идеальная чистота <br> для вашего бизнеса и дома</h1>
+                    <p>Профессиональный клининг с гарантией результата. Современное оборудование, экологичные средства и опытные клинеры.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn">Получить расчёт <i class="fas fa-arrow-right"></i></a>
+                        <a href="#services" class="btn btn-outline">Наши услуги</a>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-text">довольных клиентов</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-text">возвращаются снова</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-text">поддержка и выезд</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Услуги -->
+        <section id="services">
+            <div class="container">
+                <h2>Наши услуги по клинингу</h2>
+                <div class="section-subtitle">Работаем с квартирами, офисами, коттеджами и коммерческими помещениями</div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-broom"></i></div>
+                        <h3>Поддерживающая уборка</h3>
+                        <div class="price">от 1 500 ₽</div>
+                        <div class="service-desc">Регулярная уборка помещений до 60 м². Пыль, мытье полов, санузлы.</div>
+                        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Заказать</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-hand-sparkles"></i></div>
+                        <h3>Генеральная уборка</h3>
+                        <div class="price">от 3 200 ₽</div>
+                        <div class="service-desc">Глубокая чистка всех зон, мытье окон, труднодоступные места.</div>
+                        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Заказать</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-couch"></i></div>
+                        <h3>Химчистка мебели</h3>
+                        <div class="price">от 2 500 ₽</div>
+                        <div class="service-desc">Диваны, кресла, ковры. Безопасные составы, удаление запахов.</div>
+                        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Заказать</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+                        <h3>После ремонта</h3>
+                        <div class="price">от 4 500 ₽</div>
+                        <div class="service-desc">Удаление пыли, строительного мусора, обеспыливание.</div>
+                        <a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Заказать</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- О компании + преимущества -->
+        <section id="about">
+            <div class="container">
+                <h2>Почему выбирают Gorila?</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                        <h3>Эко-средства</h3>
+                        <p>Гипоаллергенные и безопасные для детей и животных.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+                        <h3>Опытные клинеры</h3>
+                        <p>Регулярное обучение, допуск к сложным загрязнениям.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Страхование</h3>
+                        <p>Материальная ответственность до 500 000 ₽.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+                        <h3>Гарантия качества</h3>
+                        <p>Бесплатный повторный выезд, если что-то не устроило.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Отзывы -->
+        <section class="testimonials">
+            <div class="container">
+                <h2>Отзывы наших клиентов</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="testimonial-text">"Заказала генеральную уборку после ремонта. Ребята приехали с техникой, всё вымыли до блеска. Даже батареи отмыли! Рекомендую."</p>
+                        <div class="client-name">— Анна К., Москва</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="testimonial-text">"Регулярно заказываем поддерживающую уборку в офисе. Отличный сервис, всегда вовремя, вежливый персонал. Спасибо за чистоту!"</p>
+                        <div class="client-name">— ООО «Технолайн»</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="testimonial-text">"Химчистка дивана прошла отлично, пятна исчезли, запах свежести. Цена адекватная. Буду обращаться еще."</p>
+                        <div class="client-name">— Дмитрий П.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контакты и форма -->
+        <section id="contact">
+            <div class="container">
+                <h2>Свяжитесь с нами</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3 style="margin-bottom: 24px;">Контактная информация</h3>
+                        <div class="info-item"><i class="fas fa-phone-alt"></i> <span>+7 (495) 123-45-67</span></div>
+                        <div class="info-item"><i class="fas fa-envelope"></i> <span>clean@master.ru</span></div>
+                        <div class="info-item"><i class="fas fa-map-marker-alt"></i> <span>Москва, ул. Чистоты, 15, офис 301</span></div>
+                        <div class="info-item"><i class="fas fa-clock"></i> <span>Ежедневно с 08:00 до 22:00</span></div>
+                        <div style="margin-top: 32px;">
+                            <p><strong>Оставьте заявку</strong> — мы перезвоним в течение 15 минут и подберем удобное время уборки.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <form id="contactForm" class="contact-form">
+                            <input type="text" placeholder="Ваше имя" id="name" required>
+                            <input type="tel" placeholder="Номер телефона" id="phone" required>
+                            <select id="serviceSelect">
+                                <option value="Поддерживающая уборка">Поддерживающая уборка</option>
+                                <option value="Генеральная уборка">Генеральная уборка</option>
+                                <option value="Химчистка мебели">Химчистка мебели</option>
+                                <option value="Уборка после ремонта">Уборка после ремонта</option>
+                                <option value="Другое">Другое (уточню)</option>
+                            </select>
+                            <textarea rows="3" placeholder="Комментарий: площадь, особенности..." id="message"></textarea>
+                            <button type="submit" class="btn btn-accent">Отправить заявку <i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Gorila</div>
+                    <p style="margin-top: 12px;">Чистота, которой доверяют</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 Gorila. Все права защищены. Профессиональный клининг.
+            </div>
+        </div>
+    </footer>
+
+    <div id="toastMsg" class="toast-message">Спасибо! Мы свяжемся с вами в ближайшее время.</div>
+
+    <script>
+        // Бургер-меню
+        const burger = document.getElementById('burgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        burger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Плавный скролл для всех якорей
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === "#") return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Обработка отправки формы + уведомление
+        const form = document.getElementById('contactForm');
+        const toast = document.getElementById('toastMsg');
+
+        function showToast(message) {
+            toast.textContent = message || "Спасибо! Мы свяжемся с вами в ближайшее время.";
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateY(0)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 3500);
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            if (!name || !phone) {
+                showToast("Пожалуйста, укажите имя и телефон для связи.");
+                return;
+            }
+            // Эмуляция отправки
+            showToast("Заявка принята! Менеджер свяжется с вами за 15 минут.");
+            form.reset();
+        });
+
+        // Добавляем кнопке "Заказать" в карточках быструю прокрутку к контактам
+        const orderBtns = document.querySelectorAll('.service-card .btn');
+        orderBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const serviceName = btn.closest('.service-card').querySelector('h3')?.innerText || 'услуга';
+                const selectElem = document.getElementById('serviceSelect');
+                if (selectElem) {
+                    for(let i=0; i<selectElem.options.length; i++) {
+                        if(selectElem.options[i].text.includes(serviceName.split(' ')[0])) {
+                            selectElem.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
